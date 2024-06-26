@@ -1,0 +1,87 @@
+---
+title: "Iris Dataset Analysis"
+author: "Abhijeet Khatode(23206807)"
+format: pdf
+date: May 31, 2024
+date-format: long
+editor: visual
+---
+
+# Introduction
+
+The dataset used in this paper is the **iris** dataset, which is accessible in R's 'datasets' package. This dataset includes measurements of several properties for numerous types of iris flowers.
+
+## Approach
+
+I used R's 'ggplot2' package to generate a scatter plot displaying the link between the **Sepal Length** and **Sepal Width** of iris flowers. The 'iris' dataset includes 150 observations of iris flowers, 50 for each of three species: *setosa*, *versicolor*, and *virginica*.
+
+## Plot
+
+Below is a plot showing the relationship between the **Sepal Length** and **Sepal Width** of the iris flowers.
+
+```{r, eval=TRUE, echo=FALSE, fig.height=8, fig.width=10}
+# Load necessary library (ggplot2 is not used in this example)
+library(ggplot2)
+
+# Create a scatter plot with Sepal Length on the x-axis and Sepal Width on the y-axis
+plot(x = iris$Sepal.Length, y = iris$Sepal.Width,
+     # Add labels for the x-axis and y-axis
+     xlab = "Sepal Length (cm)", ylab = "Sepal Width (cm)",
+     # Add a title and subtitle to the plot
+     main = "Scatter Plot of Sepal Dimensions by Species",
+     sub = "Iris dataset: Sepal Length vs Sepal Width")
+
+# Add points to the plot with different colors for each species
+points(x = iris$Sepal.Length, y = iris$Sepal.Width,
+       # Set the color of the points based on the species
+       col = iris$Species,
+       # Set the plotting character to a filled circle
+       pch = 20)
+
+# Add a legend to the plot
+legend("topright",
+       # Set the legend labels to the levels of the species factor
+       legend = levels(iris$Species),
+       # Set the color of the legend keys to the unique values of the species factor
+       col = unique(iris$Species),
+       # Set the plotting character of the legend keys to a filled circle
+       pch = 20,
+       # Set the size of the legend text
+       cex = 0.8)
+
+```
+
+
+## **Description**
+
+The scatter plot visualizes the relationship between sepal length and sepal width for three species of the **Iris** **dataset:** ***setosa**, **versicolor**, and **virginica***. Each point represents an individual flower, colored according to its species.
+
+### Key Observations:
+
+1.  **Setosa (red points)**:
+
+    -   Sepal length ranges from approximately 4.5 to 5.8 cm.
+
+    -   Sepal width ranges from about 2.3 to 4.5 cm.
+
+    -   **Setosa** has the smallest sepal length compared to the other species and tends to have a wider sepal width.
+
+2.  **Versicolor (green points)**:
+
+    -   Sepal length ranges from approximately 4.9 to 7.0 cm.
+
+    -   Sepal width ranges from about 2.0 to 3.4 cm.
+
+    -   **Versicolor** has moderate sepal length and width, positioned between ***setosa*** and ***virginica***.
+
+3.  **Virginica (blue points)**:
+
+    -   Sepal length ranges from approximately 4.9 to 7.9 cm.
+
+    -   Sepal width ranges from about 2.2 to 3.8 cm.
+
+    -   **Virginica** generally has the longest sepals among the three species and varies significantly in sepal width.
+
+## **Conclusion**
+
+This investigation provides a fundamental grasp of how sepal diameters differ amongst iris flower species. The scatter plot shows that each species has distinct characteristics in terms of sepal length and width, which can help identify the species based on these properties. The plot's different clustering of species highlights the potential for employing sepal diameters as a species classification criterion.
